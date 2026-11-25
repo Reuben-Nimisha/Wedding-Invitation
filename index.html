@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,900&family=Jost:wght@300;400;500&family=Style+Script&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,300;9..144,900&family=Jost:wght@300;400;500&family=Style+Script&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -522,14 +522,62 @@
         content: "\2197";
         font-size: 0.9em;
       }
-
-      /* gift registry */
-      .registry {
-        background: var(--cream-deep);
+      /* detail cards with photo */
+      .card {
+        padding: 0 0 2.4rem;
+        overflow: hidden;
       }
-      .reg-card {
+      .card .pic {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        margin-bottom: 1.6rem;
+      }
+      .card .pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s ease;
+      }
+      .card:hover .pic img {
+        transform: scale(1.04);
+      }
+      .card .pic .ico {
+        position: absolute;
+        left: 50%;
+        bottom: -23px;
+        transform: translateX(-50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
         background: var(--cream);
         border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+      .card .pic .ico svg {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+      }
+      .card h3 {
+        margin-top: 1rem;
+      }
+      .card h3,
+      .card .when,
+      .card p {
+        padding: 0 1.6rem;
+      }
+      /* gift registry */
+      .registry {
+        background: var(--cream);
+      }
+      .reg-card {
+        background: var(--cream-deep);
+        border: 1px solid var(--line);
+        box-shadow: 0 34px 70px -48px rgba(62, 50, 43, 0.5);
         max-width: 620px;
         margin: 0 auto;
         padding: clamp(3rem, 6vw, 4.4rem) clamp(1.8rem, 5vw, 3.4rem);
@@ -574,7 +622,81 @@
         background: var(--rose);
         letter-spacing: 0.26em;
       }
-
+      /* engagement */
+      .engage {
+        background:
+          radial-gradient(
+            70% 90% at 85% 15%,
+            rgba(232, 176, 122, 0.38),
+            transparent 60%
+          ),
+          radial-gradient(
+            60% 70% at 10% 90%,
+            rgba(196, 203, 180, 0.55),
+            transparent 60%
+          ),
+          linear-gradient(180deg, #f3efe4 0%, #efe3d2 100%);
+      }
+      .engage .grid {
+        display: grid;
+        grid-template-columns: auto 1px 1fr;
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: center;
+      }
+      .engage .num {
+        font-family: "Fraunces";
+        font-weight: 300;
+        font-size: clamp(7rem, 22vw, 15rem);
+        line-height: 0.85;
+        color: var(--bark);
+        letter-spacing: -0.04em;
+      }
+      .engage .num small {
+        display: block;
+        font-family: "Jost";
+        font-size: 0.78rem;
+        letter-spacing: 0.4em;
+        color: var(--gold);
+        margin-top: 1rem;
+        padding-left: 0.3em;
+      }
+      .engage .vr {
+        background: var(--line);
+        height: 100%;
+        min-height: 200px;
+      }
+      .engage h2 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+      }
+      .engage .lede {
+        margin: 0.6rem 0 1.4rem;
+      }
+      .engage .row {
+        display: flex;
+        gap: 2.4rem;
+        flex-wrap: wrap;
+      }
+      .engage .row div {
+        font-size: 0.95rem;
+        color: var(--bark-soft);
+      }
+      .engage .row b {
+        display: block;
+        font-weight: 400;
+        color: var(--bark);
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 760px) {
+        .engage .grid {
+          grid-template-columns: 1fr;
+        }
+        .engage .vr {
+          display: none;
+        }
+        .engage .num {
+          font-size: 6rem;
+        }
+      }
       /* contact */
       .contact {
         background: var(--cream-deep);
@@ -1142,6 +1264,7 @@
     <nav id="nav">
       <a href="#story">Story</a>
       <a href="#details">Details</a>
+      <a href="#engagement">Engagement</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -1215,25 +1338,59 @@
         </div>
       </div>
     </section>
+    <!-- ENGAGEMENT -->
+    <section class="engage" id="engagement">
+      <div class="wrap grid">
+        <div class="num reveal">01<small>JANUARY</small></div>
+        <div class="vr"></div>
+        <div class="reveal d1">
+          <p class="lbl">THE WEDDING PRELUDE</p>
+          <h2><i>An Evening Together</i></h2>
+          <p class="lede">
+            Together with our families, we invite you to celebrate our
+            engagement with our close family and friends.
+          </p>
+          <div class="row">
+            <div><b>6:00 PM</b>1 January 2027</div>
+            <div><b>Chiriankandath Thottam</b>Thrissur, Kerala</div>
+          </div>
+          <a
+            class="dirlink"
+            href="https://www.google.com/maps/search/?api=1&query=Chiriankandath+Thottam+Thrissur"
+            target="_blank"
+            rel="noopener"
+            >Directions</a
+          >
+        </div>
+      </div>
+    </section>
 
     <!-- DETAILS -->
     <section class="details" id="details">
       <div class="wrap">
         <div class="narrow reveal" style="text-align: center">
-          <p class="lbl">THE CELEBRATION</p>
-          <h2>The day, in three parts</h2>
+          <p class="lbl">The day, in three parts</p>
+          <h1>THE WEDDING CELEBRATION</h1>
         </div>
         <div class="detail-grid">
           <div class="card reveal">
-            <div class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2v4M10 4h4" />
-                <path d="M9 12l3-6 3 6" />
-                <path d="M9 12v9M15 12v9" />
-                <path d="M9 15H6l-3 3v3M15 15h3l3 3v3" />
-                <path d="M2 21h20" />
-                <path d="M11 21v-3a1 1 0 0 1 2 0v3" />
-              </svg>
+            <div class="pic">
+              <img
+                src="pic1_2.jpeg"
+                loading="lazy"
+                alt=""
+                style="object-position: center 40%"
+              />
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2v4M10 4h4" />
+                  <path d="M9 12l3-6 3 6" />
+                  <path d="M9 12v9M15 12v9" />
+                  <path d="M9 15H6l-3 3v3M15 15h3l3 3v3" />
+                  <path d="M2 21h20" />
+                  <path d="M11 21v-3a1 1 0 0 1 2 0v3" />
+                </svg>
+              </div>
             </div>
             <h3>Ceremony</h3>
             <p class="when">11:00 in the morning</p>
@@ -1250,20 +1407,28 @@
             >
           </div>
           <div class="card reveal d1">
-            <div class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <g transform="rotate(12 7 21)">
-                  <path d="M4 3h6l-.5 7a2.5 2.5 0 0 1-5 0z" />
-                  <path d="M7 12.5V19" />
-                  <path d="M4.5 21h5" />
-                </g>
-                <g transform="rotate(-12 17 21)">
-                  <path d="M14 3h6l-.5 7a2.5 2.5 0 0 1-5 0z" />
-                  <path d="M17 12.5V19" />
-                  <path d="M14.5 21h5" />
-                </g>
-                <path d="M12 1v1.2M10.3 1.8l.6.6M13.7 1.8l-.6.6" />
-              </svg>
+            <div class="pic">
+              <img
+                src="pic1_1.jpeg"
+                loading="lazy"
+                alt=""
+                style="object-position: center 45%"
+              />
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <g transform="rotate(12 7 21)">
+                    <path d="M4 3h6l-.5 7a2.5 2.5 0 0 1-5 0z" />
+                    <path d="M7 12.5V19" />
+                    <path d="M4.5 21h5" />
+                  </g>
+                  <g transform="rotate(-12 17 21)">
+                    <path d="M14 3h6l-.5 7a2.5 2.5 0 0 1-5 0z" />
+                    <path d="M17 12.5V19" />
+                    <path d="M14.5 21h5" />
+                  </g>
+                  <path d="M12 1v1.2M10.3 1.8l.6.6M13.7 1.8l-.6.6" />
+                </svg>
+              </div>
             </div>
             <h3>Reception</h3>
             <p class="when">1:00 in the afternoon onwards</p>
@@ -1277,18 +1442,26 @@
             >
           </div>
           <div class="card reveal d2">
-            <div class="ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2.5l1.7 4.6 4.6 1.7-4.6 1.7L12 15.1l-1.7-4.6L5.7 8.8l4.6-1.7z"
-                />
-                <path
-                  d="M5 15.5l.8 2.2 2.2.8-2.2.8L5 21.5l-.8-2.2L2 18.5l2.2-.8z"
-                />
-                <path
-                  d="M19 15l.6 1.6 1.6.6-1.6.6L19 19.4l-.6-1.6-1.6-.6 1.6-.6z"
-                />
-              </svg>
+            <div class="pic">
+              <img
+                src="pic1_3.jpeg"
+                loading="lazy"
+                alt=""
+                style="object-position: center 55%"
+              />
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.5l1.7 4.6 4.6 1.7-4.6 1.7L12 15.1l-1.7-4.6L5.7 8.8l4.6-1.7z"
+                  />
+                  <path
+                    d="M5 15.5l.8 2.2 2.2.8-2.2.8L5 21.5l-.8-2.2L2 18.5l2.2-.8z"
+                  />
+                  <path
+                    d="M19 15l.6 1.6 1.6.6-1.6.6L19 19.4l-.6-1.6-1.6-.6 1.6-.6z"
+                  />
+                </svg>
+              </div>
             </div>
             <h3>Blessings</h3>
             <p class="when">With family &amp; friends</p>
@@ -1366,7 +1539,7 @@
       </blockquote>
     </section>
 
-    <!-- GIFT REGISTRY
+    <!-- GIFT REGISTRY -->
     <section class="registry">
       <div class="wrap reveal">
         <div class="reg-card">
@@ -1387,7 +1560,7 @@
           >
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
