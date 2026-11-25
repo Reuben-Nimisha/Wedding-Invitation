@@ -1216,9 +1216,17 @@
           grid-template-columns: 1fr;
         }
         .split .imgwrap {
-          aspect-ratio: 4/5;
+          aspect-ratio: auto;
           max-width: 440px;
           margin: 0 auto;
+          overflow: visible;
+        }
+        .split .imgwrap img {
+          position: static;
+          inset: auto;
+          width: 100%;
+          height: auto;
+          transform: none !important;
         }
         .detail-grid {
           grid-template-columns: 1fr;
